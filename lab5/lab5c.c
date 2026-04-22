@@ -1,7 +1,7 @@
 /*c.  Program to perform the following task using I/O system calls for file I/O 
     i. Reading first 10 characters from file 
     ii. Skipping 5 characters from current position in the file 
-    iii. Going to 5thlast character in the file 
+    iii. Going to 5th last character in the file 
     iv. Going to the 3rdcharacter in the file 
 */
 
