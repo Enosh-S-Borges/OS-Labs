@@ -1,0 +1,16 @@
+
+[PARENT] This is the parent pocess.
+[PARENT] My pid is 8574
+[PARENT] Wating for the child to terminate
+
+[CHILD] This is the child process.
+[CHILD] My pid is 8575
+[CHILD] My parent's pid is 8574
+[CHILD] i=-1
+[CHILD] Child process is going to load another program using execlp system call
+/home/enosh/Documents/3D Objects/OS-Labs/lab5
+
+[PARENT] Resuming after termination of 8575
+[PARENT] My parent's pid is 8416
+[PARENT] My child's pid is 8575
+[PARENT] i=1

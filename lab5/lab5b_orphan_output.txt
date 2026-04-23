@@ -1,0 +1,13 @@
+
+[PARENT] This is the parent process.
+[PARENT] My pid is 10804
+[PARENT] My parent's pid is 8416
+[PARENT] Exiting
+
+[CHILD] This is the child process.
+[CHILD] My pid is 10805
+[CHILD] My parent's pid is 1465
+[CHILD] Sleeping for 10 seconds
+
+sem4d2@systems:~/Enosh/OS$
+[CHILD] My parent has ended, so I am an orphan process, adopted my init process.

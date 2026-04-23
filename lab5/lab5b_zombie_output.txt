@@ -1,0 +1,13 @@
+
+[PARENT] This is the parent process.
+[PARENT] My pid is 9808
+[PARENT] My parent's pid is 8416
+[PARENT] Sleeping for 10 seonds.
+
+[CHILD] This is child process.
+[CHILD] My pid is 9809
+[CHILD] My parent's pid is 9808
+[CHILD] Exiting
+
+[PARENT] Child process with pid=9809 has ended, but still has an entry in the process table.
+[PARENT] It is therefore a Zombie process.

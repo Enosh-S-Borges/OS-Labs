@@ -1,0 +1,5 @@
+File descriptor for testFile.txt is 3 and copy.txt is 4
+File has been created and the contents are copied successfully.
+
+sem4d2@systems:~/Enosh/OS$ cat copy.txt
+This is the first sentence of the file. Then, we have the second sentence.

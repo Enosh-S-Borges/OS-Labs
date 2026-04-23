@@ -1,0 +1,19 @@
+File description is -1
+
+Failed to open file.
+
+cat>testFile.txt
+This is the fisrt sentence of the file. Then, we have the second sentence.
+^Z
+[1]+  Stopped                    cat > testFile.txt
+
+File description is 3
+Reading first 10 characters from the file.
+This is th
+Skipping 5 characters from current position in the file:
+rt sentenc
+Going to 5th last character in the file:
+nce.
+
+Going to 3rd character in the file:
+s is 
