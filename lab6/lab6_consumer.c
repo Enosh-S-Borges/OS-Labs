@@ -6,6 +6,8 @@
 Implement the above using shmget and shmat 
 Note: Shared object should be removed at the end in the program. */
 
+// ii) Consumer program
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
