@@ -1,7 +1,7 @@
 
 [PARENT] This is the parent pocess.
 [PARENT] My pid is 8574
-[PARENT] Wating for the child to terminate
+[PARENT] Waiting for the child to terminate
 
 [CHILD] This is the child process.
 [CHILD] My pid is 8575
