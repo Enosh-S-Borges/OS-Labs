@@ -8,7 +8,7 @@
 [CHILD] My parent's pid is 8574
 [CHILD] i=-1
 [CHILD] Child process is going to load another program using execlp system call
-/home/enosh/Documents/3D Objects/OS-Labs/lab5
+sem4d2@systems:~/Enosh/OS$
 
 [PARENT] Resuming after termination of 8575
 [PARENT] My parent's pid is 8416
