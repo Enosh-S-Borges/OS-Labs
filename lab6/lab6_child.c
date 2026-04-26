@@ -6,36 +6,33 @@
 Implement the above using shmget and shmat 
 Note: Shared object should be removed at the end in the program. */
 
-// i) Producer program
+// ii) Child program
 
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
-#include <sys/types.h>
 #include <sys/shm.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <string.h>
-#include <sys/mman.h>
+#include <sys/types.h>
 
-int main()
+int main(int argc, char *argv[])
 {
-    void *psm;
-    char buf[10];
-    int shmid;
+    int shmid = atoi(argv[1]);
+    int n = atoi(argv[2]);
 
-    shmid = shm_open("dsaygdsik", O_CREAT | O_RDWR, 0666);
-    ftruncate(shmid, 1024);
+    int *arr = (int *) shmat(shmid, NULL, 0);
 
-    psm = mmap(0, 1024, PROT_WRITE, MAP_SHARED, shmid, 0);
+    int a = 0, b = 1, c;
 
-    printf("Key/ID of the shared memory: %d\n", shmid);
-    printf("Shared memory attached at %p\n", psm);
+    arr[0] = a;
+    arr[1] = b;
 
-    printf("Enter some data to write to shared memory: ");
-    read(0, buf, 10);
+    for(int i = 2; i < n; i++)
+    {
+        c = a + b;
+        arr[i] = c;
+        a = b;
+        b = c;
+    }
 
-    sprintf(psm, "%s", buf);
-
+    shmdt(arr);
     return 0;
 }
