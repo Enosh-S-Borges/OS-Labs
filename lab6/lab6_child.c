@@ -8,31 +8,45 @@ Note: Shared object should be removed at the end in the program. */
 
 // ii) Child program
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/shm.h>
 #include <sys/types.h>
+#include <sys/wait.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/shm.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
-    int shmid = atoi(argv[1]);
-    int n = atoi(argv[2]);
+int main(int argc, char *argv[]) {
+    int k = 2, n1, n2, n3;
+    void *ptr;
+    int shmid = shmget((key_t)1122, 4096, 0666);
+    ptr = shmat(shmid, NULL, 0666);
 
-    int *arr = (int *) shmat(shmid, NULL, 0);
+    printf("CHILD:\n");
+    int i = atoi(argv[1]);
+    n1 = 0;
+    n2 = 1;
 
-    int a = 0, b = 1, c;
+    sprintf(ptr, "%d ", n1);
+    ptr += strlen(ptr);
+    printf("%d ", n1);
 
-    arr[0] = a;
-    arr[1] = b;
+    sprintf(ptr, "%d ", n2);
+    ptr += strlen(ptr);
+    printf("%d ", n2);
 
-    for(int i = 2; i < n; i++)
-    {
-        c = a + b;
-        arr[i] = c;
-        a = b;
-        b = c;
+    while (k != i) {
+        n3 = n1 + n2;
+        sprintf(ptr, "%d ", n3);
+        printf("%d ", n3);
+        n1 = n2;
+        n2 = n3;
+        ptr += strlen(ptr);
+        k++;
     }
-
-    shmdt(arr);
+    shmctl(shmid, IPC_RMID, NULL);
     return 0;
 }
