@@ -1,0 +1,6 @@
+sem4d2@systems:~/Enosh/OS$ cc lab6_parent.c; cc lab6_child.c -o fib; ./a.out 10
+CHILD:
+0 1 1 2 3 5 8 13 21 34 
+PARENT: child completed
+Parent printing:
+0 1 1 2 3 5 8 13 21 34 
