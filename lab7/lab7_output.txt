@@ -1,0 +1,9 @@
+sem4d2@systems:~/Enosh/OS$ cc lab7_child.c -lrt -lm -o child; cc lab7_parent.c -lrt -o parent; ./parent 5 20
+CHILD:
+The prime numbers in the range 5 and 20 are:
+5       7       11      13      17      19
+
+Parent: child completed!
+Segmentation fault         (core dumped)
+em4d2@systems:~/Enosh/OS$ ./parent 1 20
+Error input: 1
