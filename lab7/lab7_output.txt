@@ -5,5 +5,5 @@ The prime numbers in the range 5 and 20 are:
 
 Parent: child completed!
 Segmentation fault         (core dumped)
-em4d2@systems:~/Enosh/OS$ ./parent 1 20
+sem4d2@systems:~/Enosh/OS$ ./parent 1 20
 Error input: 1
