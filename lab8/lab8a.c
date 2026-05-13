@@ -3,6 +3,8 @@ Schedule the task of calculating the natural sum upto 'n' terms and factorial of
 NOTE: The main thread should read 'n' from command line and pass it as parameter to remaining threads. Terminate the threads using system calls. 
 b) Implement FCFS scheduling algorithm by defining the process structure. 
 */
+
+//a) threads program
 // gcc thread.c -pthread
 
 #include <stdio.h>
