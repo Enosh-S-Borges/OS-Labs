@@ -1,0 +1,38 @@
+Enter the number of processes: 5
+Process 1
+Enter Arrival Time: 0
+Enter Burst Time: 8
+
+Process 2
+Enter Arrival Time: 5
+Enter Burst Time: 2
+
+Process 3
+Enter Arrival Time: 1
+Enter Burst Time: 7
+
+Process 4
+Enter Arrival Time: 6
+Enter Burst Time: 3
+
+Process 5
+Enter Arrival Time: 8
+Enter Burst Time: 5
+
+
+Observation Table
+PID     AT      BT      CT      TT      WT      RT
+1       0       8       10      10      2       0
+2       5       2       7       2       0       0
+3       1       7       25      24      17      17
+4       6       3       13      7       4       4
+5       8       5       18      10      5       5
+
+Gantt Chart
+(P0 --> idle time)
+| P1    | P2    | P1    | P4    | P5    | P3    |
+0       5       7       10      13      18      25
+
+Average Waiting Time: 5.60
+Average Turnaround Time: 10.60
+Average Response Time: 5.20
