@@ -119,17 +119,34 @@ void sjfPreemptive(Process processes[], int n) {
                processes[i].responseTime);
     }
 
-    // Print Gantt Chart
+    // Clean Gantt Chart
     printf("\nGantt Chart\n(P0 --> idle time)\n");
-    for (int i = 0; i <= k; i++) {
-        printf("| P%d\t", processTrack[i]);
+
+    printf("| P%d\t", processTrack[0]);
+
+    int prev = processTrack[0];
+
+    for (int i = 1; i <= k; i++) {
+        if (processTrack[i] != prev) {
+            printf("| P%d\t", processTrack[i]);
+            prev = processTrack[i];
+        }
     }
     printf("|\n");
 
-    for (int i = 0; i <= j; i++) {
-        printf("%d\t", timeProgress[i]);
+    // Print corresponding times
+    printf("%d\t", timeProgress[0]);
+
+    prev = processTrack[0];
+
+    for (int i = 1; i <= k; i++) {
+        if (processTrack[i] != prev) {
+            printf("%d\t", timeProgress[i]);
+            prev = processTrack[i];
+        }
     }
-    printf("\n");
+
+    printf("%d\n", timeProgress[j]);
 
     // Print Averages
     avgTurnAroundTime = (float)totalTurnAroundTime / n;
