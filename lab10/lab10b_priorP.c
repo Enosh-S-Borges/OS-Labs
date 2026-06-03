@@ -23,34 +23,72 @@ void main() {
         scanf("%d%d%d", &p[i].AT, &p[i].BT, &p[i].priority); 
         tempBT[i] = p[i].BT; 
     } 
-    printf("\nGantt Chart:\n"); 
-    int minIndex, minPriority, completed=0, curTime = 0; 
-    while(completed != n) { 
-        minIndex = -1; 
-        minPriority = 9999; 
-        for(int i=0; i<n; i++) { 
-            if(p[i].AT <= curTime && p[i].BT>0) { 
-                if(p[i].priority < minPriority || (p[i].priority == minPriority && p[i].AT < p[minIndex].AT)) { 
+    printf("\nGantt Chart:\n");
+
+    int minIndex, minPriority, completed = 0, curTime = 0;
+    int currentProcess = -1;        // Track currently running process
+    int startTime = 0;              // Start time of current process slice
+
+    while (completed != n) {
+        minIndex = -1;
+        minPriority = 9999;
+
+        // Find process with highest priority (lowest priority number)
+        for (int i = 0; i < n; i++) {
+            if (p[i].AT <= curTime && p[i].BT > 0) {
+                if (p[i].priority < minPriority || 
+                    (p[i].priority == minPriority && p[i].AT < p[minIndex].AT)) {
                     minPriority = p[i].priority;
-                    minIndex = i; 
-                } 
-            } 
-        } 
-        curTime++; 
-        if (minIndex != -1) { 
-            p[minIndex].BT--; 
-            printf("| P%d(1) %d", p[minIndex].Id, curTime); 
+                    minIndex = i;
+                }
+            }
+        }
+
+        if (minIndex != -1) {
+            // Process changed
+            if (currentProcess != minIndex) {
+                // Print previous process slice (if any)
+                if (currentProcess != -1) {
+                    printf("| P%d(%d) %d", p[currentProcess].Id, 
+                    curTime - startTime, curTime);
+                }
+            
+                // Start new process slice
+                currentProcess = minIndex;
+                startTime = curTime;
+            }
+
+            p[minIndex].BT--;
+            curTime++;
+
             if (p[minIndex].BT == 0) {
-                p[minIndex].CT = curTime; 
-                p[minIndex].TAT = p[minIndex].CT - p[minIndex].AT; 
-                p[minIndex].WT = p[minIndex].TAT - tempBT[minIndex]; 
-                total_TAT += p[minIndex].TAT; 
-                total_WT += p[minIndex].WT; 
-                completed++; 
+                p[minIndex].CT = curTime;
+                p[minIndex].TAT = p[minIndex].CT - p[minIndex].AT;
+                p[minIndex].WT = p[minIndex].TAT - tempBT[minIndex];
+                total_TAT += p[minIndex].TAT;
+                total_WT += p[minIndex].WT;
+                completed++;
             }
         } 
-    }  
-    printf("|\n"); 
+        else {
+            // No process ready (idle)
+            if (currentProcess != -1) {
+                printf("| P%d(%d) %d", p[currentProcess].Id, 
+                       curTime - startTime, curTime);
+                currentProcess = -1;
+            }
+            curTime++;
+        }
+    }
+
+
+    // Print the last process slice
+    if (currentProcess != -1) {
+        printf("| P%d(%d) %d", p[currentProcess].Id, 
+        curTime - startTime, curTime);
+    }
+
+    printf("|\n");
     avg_TAT = (float)total_TAT/n; 
     avg_WT = (float)total_WT/n; 
     //Printing the table of processes with details 
